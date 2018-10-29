@@ -1,2 +1,0 @@
-# newVer
-Falanu Dhiknu
