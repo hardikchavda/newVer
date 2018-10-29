@@ -6,14 +6,12 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\User;
 use Auth;
+use App\userinfo;
 use Redirect;
-
-
 
 class AdminController extends Controller {
 
     public function login() {
-
         return view('admin.login');
     }
 
@@ -25,8 +23,7 @@ class AdminController extends Controller {
             return redirect()->intended('admin/home');
         } else {
             return Redirect::to('admin/login');
-        }
-        
+        }        
     }
 
     public function logout() {
@@ -35,7 +32,8 @@ class AdminController extends Controller {
     }
     
      public function home() {
-        return view('admin.home');
+         $tabl = userinfo::all();
+        return view('admin.home', compact('tabl'));
     }
 
 }
