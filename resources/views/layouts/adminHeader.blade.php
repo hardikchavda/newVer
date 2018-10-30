@@ -4,7 +4,7 @@
         <title>Laravel</title>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-        <link rel="stylesheet" href="assets/css/main.css" />
+        <link rel="stylesheet" href="{{URL::asset('asset/css/main.css')}}" />
     </head>
     <body class="homepage is-preload">
         <div id="page-wrapper">
@@ -18,23 +18,33 @@
                         <div class="inner">
 
                             <!-- Logo -->
-                            <h1><a href="/" id="logo">Model Example</a></h1>
+                            <h1><a href="/admin/home" id="logo">Model Example</a></h1>
 
                             <!-- Nav -->
                             <nav id="nav">
                                 <ul>
+
+
+
                                     @if(!Auth::guest())
-                                    <li ><a href="{{action('AdminController@logout')}}">{{Auth::user()->name}}</a></li>                                                                    
+                                    <li>
+                                        <a href="#">{{Auth::user()->name}}</a>
+                                        <ul>
+                                            <li ><a href="{{action('AdminController@logout')}}">Logout</a></li>                                                                                                                
+                                        </ul>
+                                    </li>
                                     @else
-                                    <li ><a href="{{action('AdminController@logout')}}">Logout</a></li>                                                                    
+                                    <li ><a href="{{action('AdminController@login')}}">Logout</a></li>                                                                                                                
                                     @endif
+
+
                                 </ul>
                             </nav>
 
                         </div>
                     </header>
 
-                   
+
 
                 </div>
             </div>

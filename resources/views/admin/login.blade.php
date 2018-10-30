@@ -4,7 +4,7 @@
         <title>Laravel</title>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-        <link rel="stylesheet" href="assets/css/main.css" />
+        <link rel="stylesheet" href="{{URL::asset('asset/css/main.css')}}" />
     </head>
     <body class="homepage is-preload">
         <div id="page-wrapper">
@@ -18,7 +18,7 @@
                         <div class="inner">
 
                             <!-- Logo -->
-                            <h1><a href="/" id="logo">Model Example</a></h1>
+                            <h1><a href="/admin/home" id="logo">Model Example</a></h1>
 
 
 
@@ -51,7 +51,7 @@
                                             {!!Form::text('fnm',null)!!}
 
                                             {!!Form::label('lnm','Password')!!}
-                                            {!!Form::text('lnm',null)!!}
+                                            {!!Form::password('lnm',null)!!}
 
 
                                             {!!Form::label('','')!!}

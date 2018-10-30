@@ -35,5 +35,15 @@ class AdminController extends Controller {
          $tabl = userinfo::all();
         return view('admin.home', compact('tabl'));
     }
+    
+     public function edit($id) {
+         $tabl = userinfo::findOrFail($id);
+        return view('admin.edit')->withTabl($tabl);
+    }
+    
+     public function delete($id) {
+         $tabl = userinfo::findOrFail($id);
+        return view('admin.delete')->withTabl($tabl);
+    }
 
 }

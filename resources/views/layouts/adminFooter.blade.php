@@ -14,12 +14,12 @@
         </div>
 
         <!-- Scripts -->
-        <script src="assets/js/jquery.min.js"></script>
-        <script src="assets/js/jquery.dropotron.min.js"></script>
-        <script src="assets/js/browser.min.js"></script>
-        <script src="assets/js/breakpoints.min.js"></script>
-        <script src="assets/js/util.js"></script>
-        <script src="assets/js/main.js"></script>
+<script src="{{URL::asset('/asset/js/jquery.min.js')}}"></script>
+<script src="{{URL::asset('/asset/js/jquery.dropotron.min.js')}}"></script>
+<script src="{{URL::asset('/asset/js/browser.min.js')}}"></script>
+<script src="{{URL::asset('/asset/js/breakpoints.min.js')}}"></script>
+<script src="{{URL::asset('/asset/js/util.js')}}"></script>
+<script src="{{URL::asset('/asset/js/main.js')}}"></script>
 
     </body>
 </html>
