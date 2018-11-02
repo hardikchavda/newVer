@@ -18,18 +18,28 @@ Route::post('admin/login', 'AdminController@logincheck');
 Route::get('admin/login', 'AdminController@login');
 Route::get('admin/logout', 'AdminController@logout');
 
-Route::group(['middleware'=>'prevent-back-history'],function(){
-    
-      Route::group(['middleware' => 'guest'], function () {
+Route::group(['middleware' => 'prevent-back-history'], function() {
+
+    Route::group(['middleware' => 'guest'], function () {
         Route::get('/admin/login', 'AdminController@login');
     });
-    
+
+    Route::auth();
+
+    Route::get('admin/home', 'HomeController@index');
+
+
+
     Route::group(['middleware' => 'auth'], function() {
-    Route::get('admin/home', 'AdminController@home');
-    Route::get('/admin/edit/{id}', 'AdminController@edit');
-    Route::get('admin/delete/{id}', 'AdminController@delete');
+        Route::get('admin/home', 'AdminController@home');
+        Route::get('/admin/edit/{id}', 'AdminController@edit');
+        Route::get('admin/delete/{id}', 'AdminController@delete');
+        Route::patch('/admin/update/{id}', 'AdminController@update');
+        Route::delete('/admin/destroy/{id}', 'AdminController@destroy');
+    });
 });
-});
+
+
 
 
 

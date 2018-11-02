@@ -11,38 +11,35 @@
 
                         <!-- Excerpt -->
                         <article class="box excerpt">
-                        <table>
-                                <tr>
-                                    <td>
-                                        Firstname
-                                    </td>
-                                    <td>
-                                        Lastname
-                                    </td>
-                                    <td>
-                                        Age
-                                    </td>
-                                    <td>
-                                        Edit
-                                    </td>
-                                    <td>
-                                        Delete
-                                    </td>
-                                </tr>     {{--                                           
-                                @forelse($tabl as $data)
-                                <tr>
-                                    <td>{{$data->firstname}}</td>
-                                    <td>{{$data->lastname}}</td>
-                                    <td>{{$data->age}}</td>
-                                    <td><a href="edit/{{$data->id}}">Edit</a></td>
-                                    <td><a href="delete/{{$data->id}}">Delete</a></td>
-                                </tr>                                                
-                                @empty
-                                Nothing Available
-                                @endforelse     
-                                
-                                --}}
-                            </table>
+                              <article class="box excerpt">
+        {!!Form::model($tabl, ['method'=>'DELETE','action' => ['AdminController@destroy',$tabl->id],'onSubmit'=>'return confirm("Are you sure?")'])!!}
+        
+        {!!Form::label('fnm','Firstname')!!}
+        {!!Form::text('firstname',null)!!}
+        
+        {!!Form::label('lnm','Lasttname')!!}
+        {!!Form::text('lastname',null)!!}
+        
+        {!!Form::label('age','Age')!!}
+        {!!Form::text('age',null)!!}
+        
+        {!!Form::label('ct','City')!!}
+        {!!Form::text('city',null)!!}
+        
+        {!!Form::label('ad','Address')!!}
+        {!!Form::text('address',null)!!}
+        
+        {!!Form::label('cnt','Contact Number')!!}
+        {!!Form::text('contactno',null)!!}
+                
+        {!!Form::label('gd','Gender')!!}
+        {!!Form::text('gender',null)!!}
+                
+        {!!Form::label('','')!!}
+        {!!Form::submit('submit')!!}
+        
+        {!!Form::close()!!}
+                        </article>
                         </article>
 
 

@@ -18,32 +18,44 @@ class AdminController extends Controller {
     public function logincheck(Request $req) {
         $uname = $req->fnm;
         $password = $req->lnm;
-       // dd(Auth::attempt(['name' => $uname, 'password' => $password]));
+        // dd(Auth::attempt(['name' => $uname, 'password' => $password]));
         if (Auth::attempt(['name' => $uname, 'password' => $password])) {
             return redirect()->intended('admin/home');
         } else {
             return Redirect::to('admin/login');
-        }        
+        }
     }
 
     public function logout() {
         Auth::logout();
         return redirect('admin/login');
     }
-    
-     public function home() {
-         $tabl = userinfo::all();
+
+    public function home() {
+        $tabl = userinfo::all();
         return view('admin.home', compact('tabl'));
     }
-    
-     public function edit($id) {
-         $tabl = userinfo::findOrFail($id);
+
+    public function edit($id) {
+        $tabl = userinfo::findOrFail($id);
         return view('admin.edit')->withTabl($tabl);
     }
-    
-     public function delete($id) {
-         $tabl = userinfo::findOrFail($id);
+
+    public function delete($id) {
+        $tabl = userinfo::findOrFail($id);
         return view('admin.delete')->withTabl($tabl);
+    }
+
+    public function update($id, Request $req) {
+
+        $tabl = userinfo::findOrFail($id);
+        $tabl->update($req->all());
+        return redirect()->back();
+    }
+
+    public function destroy($id) {
+        $tabl = userinfo::destroy($id);
+        //return redirect('admin/home');
     }
 
 }
