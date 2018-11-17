@@ -58,4 +58,19 @@ class AdminController extends Controller {
         //return redirect('admin/home');
     }
 
+    public function create() {
+        return view('admin.create');
+    }
+    
+      public function addition(Request $req) {
+
+        $tabl = new userinfo();
+        $this->validate($req, [
+            'firstname' => 'required|alpha',
+            'lastname'=>'required|alpha'
+            
+        ]);
+        $tabl::create($req->all());        
+    }
+
 }
