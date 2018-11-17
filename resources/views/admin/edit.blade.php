@@ -31,7 +31,7 @@
             </div>
             <div class="form-group">
                 {!!Form::label('ct','City')!!}
-                {!!Form::text('city',null,['class'=>'form-control'])!!}
+                {!!Form::select('city',['R'=>'Rajkot','A'=>'Ahmedabad','J'=>'Jamnagar'],null,['class'=>'form-control'])!!}
             </div>
             <div class="form-group">
                 {!!Form::label('ad','Address')!!}
@@ -43,7 +43,19 @@
             </div>
             <div class="form-group">
                 {!!Form::label('gd','Gender')!!}
-                {!!Form::text('gender',null,['class'=>'form-control'])!!}
+                @if($tabl->gender=='Male')
+                <br>
+                {!!Form::radio('gender','Male',true,['class'=>'radio-inline'])!!}                
+                Male 
+                {!!Form::radio('gender','Female',false,['class'=>'radio-inline'])!!}
+                Female
+                @else
+                {!!Form::radio('gender','Male',false,['class'=>'radio-inline'])!!}                
+                Male 
+                {!!Form::radio('gender','Female',true,['class'=>'radio-inline'])!!}
+                Female
+                @endif
+
             </div>
         </div>
         <div class="box-footer">
@@ -78,7 +90,7 @@
     <script>
         $('#delete').click(function () {
             var inputData = $('#formDelete').serialize();
-            var id = $('#deleteRec').attr("data-id");          
+            var id = $('#deleteRec').attr("data-id");
             $.ajax(
                     {
                         url: "/admin/destroy/" + id,
