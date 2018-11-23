@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests;
+use App\Http\Requests\userInfoReq;
 use App\User;
 use Auth;
 use App\userinfo;
@@ -62,14 +63,8 @@ class AdminController extends Controller {
         return view('admin.create');
     }
     
-      public function addition(Request $req) {
-
-        $tabl = new userinfo();
-        $this->validate($req, [
-            'firstname' => 'required|alpha',
-            'lastname'=>'required|alpha'
-            
-        ]);
+      public function addition(userInfoReq $req) {
+        $tabl = new userinfo();       
         $tabl::create($req->all());        
     }
 

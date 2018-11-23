@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
 
-class reg extends Request
+class userInfoReq extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,8 +23,10 @@ class reg extends Request
      */
     public function rules()
     {
-        return [
-            //
+        return [          
+            'firstname' => 'required|alpha',
+            'lastname'=>'required|alpha',
+            'city'=>'required'                    
         ];
     }
 }
